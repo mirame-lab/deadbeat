@@ -1,0 +1,90 @@
+############################################################################################
+# TODO: Provide the base URL of your live REST API Service hosted on Firebase (or heroku)
+# TODO:   and the list of endpoints of the your service supports
+# TODO: Remove all the comments I provided here in your submission. Also, write only
+# TODO:   the endpoints that you use in your REST API and remove others from this file
+#
+# This file is to be used by Rest Client Tool in VSCode.
+# Your REST API service does not need to implement all the endpoints listed here.
+#
+# You may want to add other endpoints whenever necessary. For example, you may provide dedicated
+#  endpoints for updating the 'like' and 'dislike' values.
+#
+#  Example endpoints you may use for these use cases:
+#        /quotes/:id/like
+#        /quotes/:id/dislike
+#        /quotes/:id?vote='like' or 'dislike'
+#        /like/:quiteId
+#        /dislike/:quiteId
+#
+#  If you don't provide these endpoints, then you need to implement for voting like/dislike
+#    at the client-side (i.e. at Flutter code). Here is the logics you want to implement:
+#
+#   - Get the current record of the quote, by invoking the REST call below:
+#           GET  /quotes/:id
+#   - Increase the 'like' (or 'dislike') attribute in flutter code accordingly (depending user interaction, thumb up or down)
+#   - Update the quote with the incremented 'like' (or 'dislike'), by invoking the REST call below:
+#           PATCH /quotes/:id
+#
+############################################################################################
+
+# Write your API url. e.g. https://us-central1-jumail-backend-firebase-rest.cloudfunctions.net/api
+@baseUrl = _______________________________________________
+
+### Example of endpoints for basic CRUD operations.
+#    Later in your submission, leave only the one that you actually use and remove others from this file.
+
+
+### Get the list of quotes
+GET {{baseUrl}}/quotes
+
+###  Getting a quote for a given id
+GET {{baseUrl}}/quotes/7hafVnkozwXR6u2world
+
+###  Add a new quote
+POST {{baseUrl}}/quotes
+Content-Type: application/json
+
+{
+    "data": "This is a new quote",
+    "like" : 0,
+    "dislike" : 0
+}
+
+### Update a quote partly
+PATCH {{baseUrl}}/quotes/7hafVnkozwXR6u2world
+Content-Type: application/json
+
+{
+        "like" : 10
+}
+
+###
+PATCH {{baseUrl}}/quotes/7hafVnkozwXR6u2world
+Content-Type: application/json
+
+{
+        "dislike" : 2
+}
+
+### Replace an existing quote entirely
+PUT {{baseUrl}}/quotes/7hafVnkozwXR6u2world
+Content-Type: application/json
+
+{
+    "data": "Programming is not everything",
+    "like" : 5,
+    "dislike" : 5
+}
+
+### Delete a quote
+DELETE {{baseUrl}}/quotes/7hafVnkozwXR6u2world
+
+### Thumb up (or Like) - Update the 'like' attribute by inreasing by 1
+PATCH {{baseUrl}}/quotes/9helloKozwXR6u2world/like
+
+###
+PATCH {{baseUrl}}/like/9helloKozwXR6u2world
+
+###
+PATCH {{baseUrl}}/quotes/9helloKozwXR6u2world?vote=like
