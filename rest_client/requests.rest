@@ -1,34 +1,4 @@
-############################################################################################
-# TODO: Provide the base URL of your live REST API Service hosted on Firebase (or heroku)
-# TODO:   and the list of endpoints of the your service supports
-# TODO: Remove all the comments I provided here in your submission. Also, write only
-# TODO:   the endpoints that you use in your REST API and remove others from this file
-#
-# This file is to be used by Rest Client Tool in VSCode.
-# Your REST API service does not need to implement all the endpoints listed here.
-#
-# You may want to add other endpoints whenever necessary. For example, you may provide dedicated
-#  endpoints for updating the 'like' and 'dislike' values.
-#
-#  Example endpoints you may use for these use cases:
-#        /quotes/:id/like
-#        /quotes/:id/dislike
-#        /quotes/:id?vote='like' or 'dislike'
-#        /like/:quiteId
-#        /dislike/:quiteId
-#
-#  If you don't provide these endpoints, then you need to implement for voting like/dislike
-#    at the client-side (i.e. at Flutter code). Here is the logics you want to implement:
-#
-#   - Get the current record of the quote, by invoking the REST call below:
-#           GET  /quotes/:id
-#   - Increase the 'like' (or 'dislike') attribute in flutter code accordingly (depending user interaction, thumb up or down)
-#   - Update the quote with the incremented 'like' (or 'dislike'), by invoking the REST call below:
-#           PATCH /quotes/:id
-#
-############################################################################################
 
-# Write your API url. e.g. https://us-central1-jumail-backend-firebase-rest.cloudfunctions.net/api
 @baseUrl = https://us-central1-exercise4-41e1b.cloudfunctions.net/api
 
 ### Example of endpoints for basic CRUD operations.
