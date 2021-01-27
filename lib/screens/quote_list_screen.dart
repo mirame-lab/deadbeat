@@ -59,7 +59,11 @@ class _QuoteListScreenState extends State<QuoteListScreen> {
         child: Icon(Icons.refresh),
 
         // TODO: Define the 'onPressed' callback for the 'Refresh' button
-        onPressed: () {},
+        onPressed: () {
+          setState(() {
+                      
+                    });
+        },
       ),
     );
   }
@@ -110,14 +114,18 @@ class _QuoteListScreenState extends State<QuoteListScreen> {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        Text('5', style: TextStyle(color: Colors.green)),
+        Text(quote.like.toString(), style: TextStyle(color: Colors.green)),
         IconButton(
           icon: Icon(
             Icons.thumb_up,
             color: Colors.green,
           ),
           // TODO: Define the 'onPressed' callback for each 'Thumb up' button
-          onPressed: () async {},
+          onPressed: () async {
+            Quote updatedQuote =
+                await dataService.updateLikes(id: quote.id, like: quote.like++);
+            setState(() => quote.like = updatedQuote.like);
+          },
         ),
         IconButton(
           icon: Icon(
@@ -125,9 +133,13 @@ class _QuoteListScreenState extends State<QuoteListScreen> {
             color: Colors.red,
           ),
           // TODO: Define the 'onPressed' callback for each 'Thumb down' button
-          onPressed: () async {},
+          onPressed: () async {
+            Quote updatedQuote =
+                await dataService.updateDislikes(id: quote.id, dislike: quote.dislike++);
+            setState(() => quote.dislike = updatedQuote.dislike);
+          },
         ),
-        Text('5', style: TextStyle(color: Colors.red)),
+        Text(quote.dislike.toString(), style: TextStyle(color: Colors.red)),
       ],
     );
   }
