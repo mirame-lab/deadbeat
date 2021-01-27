@@ -49,4 +49,8 @@ class QuoteDataService {
   //        Vote a quote for like or dislike
   //        Like or dislike a quote
 
+  Future<Quote> getQuote({String id}) async {
+    final json = await rest.get('quotes/$id');
+    return Quote.fromJson(json);
+  }
 } // class Quote

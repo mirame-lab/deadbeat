@@ -29,7 +29,7 @@
 ############################################################################################
 
 # Write your API url. e.g. https://us-central1-jumail-backend-firebase-rest.cloudfunctions.net/api
-@baseUrl = _______________________________________________
+@baseUrl = https://us-central1-exercise4-41e1b.cloudfunctions.net/api
 
 ### Example of endpoints for basic CRUD operations.
 #    Later in your submission, leave only the one that you actually use and remove others from this file.
@@ -39,7 +39,7 @@
 GET {{baseUrl}}/quotes
 
 ###  Getting a quote for a given id
-GET {{baseUrl}}/quotes/7hafVnkozwXR6u2world
+GET {{baseUrl}}/quotes/DG7ypE02TnjXb2cRfRSW
 
 ###  Add a new quote
 POST {{baseUrl}}/quotes
@@ -52,7 +52,7 @@ Content-Type: application/json
 }
 
 ### Update a quote partly
-PATCH {{baseUrl}}/quotes/7hafVnkozwXR6u2world
+PATCH {{baseUrl}}/quotes/U6A7xpvOMiGy1ZahlZDa
 Content-Type: application/json
 
 {
@@ -60,7 +60,7 @@ Content-Type: application/json
 }
 
 ###
-PATCH {{baseUrl}}/quotes/7hafVnkozwXR6u2world
+PATCH {{baseUrl}}/quotes/U6A7xpvOMiGy1ZahlZDa
 Content-Type: application/json
 
 {
@@ -68,7 +68,7 @@ Content-Type: application/json
 }
 
 ### Replace an existing quote entirely
-PUT {{baseUrl}}/quotes/7hafVnkozwXR6u2world
+PUT {{baseUrl}}/quotes/U6A7xpvOMiGy1ZahlZDa
 Content-Type: application/json
 
 {
@@ -78,13 +78,13 @@ Content-Type: application/json
 }
 
 ### Delete a quote
-DELETE {{baseUrl}}/quotes/7hafVnkozwXR6u2world
+DELETE {{baseUrl}}/quotes/U6A7xpvOMiGy1ZahlZDa
 
 ### Thumb up (or Like) - Update the 'like' attribute by inreasing by 1
-PATCH {{baseUrl}}/quotes/9helloKozwXR6u2world/like
+PATCH {{baseUrl}}/quotes/dhsYzlCuOyZE4xEfmOgc/like
 
 ###
-PATCH {{baseUrl}}/like/9helloKozwXR6u2world
+PATCH {{baseUrl}}/like/dhsYzlCuOyZE4xEfmOgc
 
 ###
-PATCH {{baseUrl}}/quotes/9helloKozwXR6u2world?vote=like
+PATCH {{baseUrl}}/quotes/dhsYzlCuOyZE4xEfmOgc?vote=like

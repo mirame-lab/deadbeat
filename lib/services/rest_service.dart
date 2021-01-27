@@ -19,7 +19,7 @@ class RestService {
   // TODO: change the baseUrl to your own REST API service hosted on Firebase (or heroku)
 
   static const String baseUrl =
-      'https://us-central1-jumail-backend-firebase-rest.cloudfunctions.net/api';
+      'https://us-central1-exercise4-41e1b.cloudfunctions.net/api';
 
   Future get(String endpoint) async {
     final response = await http.get('$baseUrl/$endpoint');

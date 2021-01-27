@@ -49,7 +49,7 @@ class _QuoteListScreenState extends State<QuoteListScreen> {
         itemBuilder: (context, index) {
           return ListTile(
             trailing: _buildThumbButtons(index),
-            title: Text('The quote will go here',
+            title: Text(_quotes[index].data,
                 textAlign: TextAlign.justify, style: TextStyle(fontSize: 12)),
             subtitle: _buildStarRatings(),
           );
