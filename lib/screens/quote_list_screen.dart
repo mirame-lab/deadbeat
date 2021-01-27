@@ -23,6 +23,13 @@ class _QuoteListScreenState extends State<QuoteListScreen> {
   List<Quote> _quotes;
   final dataService = QuoteDataService();
 
+  int starsList(int l, int d) {
+    var like_percentage = (l / (l + d));
+    var stars = (5 * like_percentage).round();
+
+    return stars;
+  }
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<Quote>>(
@@ -51,7 +58,8 @@ class _QuoteListScreenState extends State<QuoteListScreen> {
             trailing: _buildThumbButtons(index),
             title: Text(_quotes[index].data,
                 textAlign: TextAlign.justify, style: TextStyle(fontSize: 12)),
-            subtitle: _buildStarRatings(),
+            subtitle: _buildStarRatings(
+                stars: starsList(_quotes[index].like, _quotes[index].dislike)),
           );
         },
       ),
@@ -60,15 +68,13 @@ class _QuoteListScreenState extends State<QuoteListScreen> {
 
         // TODO: Define the 'onPressed' callback for the 'Refresh' button
         onPressed: () {
-          setState(() {
-                      
-                    });
+          setState(() {});
         },
       ),
     );
   }
 
-  Widget _buildStarRatings([int stars = 0]) {
+  Widget _buildStarRatings({int stars = 0}) {
     // stars : how many (full) stars to draw. The remaining star (i.e., 5 - stars) will be drawn as 'bordered star'
 
     // TODO: You can use two loops in this function
@@ -76,35 +82,31 @@ class _QuoteListScreenState extends State<QuoteListScreen> {
     //          2. To build the list of 'bordered or empty stars'
     //
 
+    List<Icon> starArray = [];
+    var nStar = 5;
+    for (int i = 0; i < nStar; i++) {
+      if (stars != 0) {
+        starArray.add(
+          Icon(
+            Icons.star,
+            color: Colors.orange,
+            size: 15,
+          ),
+        );
+        stars--;
+      } else {
+        starArray.add(
+          Icon(
+            Icons.star_border,
+            color: Colors.orange,
+            size: 15,
+          ),
+        );
+      }
+    }
     return Row(
       mainAxisSize: MainAxisSize.min,
-      children: [
-        Icon(
-          Icons.star,
-          color: Colors.orange,
-          size: 15,
-        ),
-        Icon(
-          Icons.star,
-          color: Colors.orange,
-          size: 15,
-        ),
-        Icon(
-          Icons.star,
-          color: Colors.orange,
-          size: 15,
-        ),
-        Icon(
-          Icons.star_border,
-          color: Colors.orange,
-          size: 15,
-        ),
-        Icon(
-          Icons.star_border,
-          color: Colors.orange,
-          size: 15,
-        ),
-      ],
+      children: starArray
     );
   }
 
@@ -134,8 +136,8 @@ class _QuoteListScreenState extends State<QuoteListScreen> {
           ),
           // TODO: Define the 'onPressed' callback for each 'Thumb down' button
           onPressed: () async {
-            Quote updatedQuote =
-                await dataService.updateDislikes(id: quote.id, dislike: quote.dislike++);
+            Quote updatedQuote = await dataService.updateDislikes(
+                id: quote.id, dislike: quote.dislike++);
             setState(() => quote.dislike = updatedQuote.dislike);
           },
         ),
