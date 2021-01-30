@@ -8,6 +8,17 @@ class Quote {
   int like; // How many likes (i.e. thumb up)
   int dislike; // How many dislikes (i.e. thumb down)
 
+  int starsList() {
+    var like_percentage, stars;
+    if (this.like != 0) {
+      like_percentage = (this.like / (this.like + this.dislike));
+      stars = (5 * like_percentage).round();
+    } else {
+      stars = 0;
+    }
+    return stars;
+  }
+
   Quote({this.id, this.data, this.like = 0, this.dislike = 0});
   Quote.fromJson(Map<String, dynamic> json)
       : this(

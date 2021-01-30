@@ -23,12 +23,7 @@ class _QuoteListScreenState extends State<QuoteListScreen> {
   List<Quote> _quotes;
   final dataService = QuoteDataService();
 
-  int starsList(int l, int d) {
-    var like_percentage = (l / (l + d));
-    var stars = (5 * like_percentage).round();
-
-    return stars;
-  }
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +54,7 @@ class _QuoteListScreenState extends State<QuoteListScreen> {
             title: Text(_quotes[index].data,
                 textAlign: TextAlign.justify, style: TextStyle(fontSize: 12)),
             subtitle: _buildStarRatings(
-                stars: starsList(_quotes[index].like, _quotes[index].dislike)),
+                stars: _quotes[index].starsList()),
           );
         },
       ),
